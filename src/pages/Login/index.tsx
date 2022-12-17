@@ -5,7 +5,7 @@ import { useState } from 'react'
 
 import { auth } from '../../services/firebase.js'
 
-import { signInWithEmailAndPassword } from 'firebase/auth'
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth'
 
 import { useNavigate } from 'react-router-dom'
 
@@ -18,8 +18,7 @@ export default function Login() {
 
     const navigate = useNavigate();
 
-    function handleLogin(e: any) {
-        e.preventDefault()
+    function handleLogin() {
         
         if(inputEmail && inputPassword) {
             signInWithEmailAndPassword(auth, inputEmail, inputPassword)
@@ -35,11 +34,26 @@ export default function Login() {
         }
     }
 
+    function handleRegister() {
+        if(inputEmail && inputPassword) {
+            createUserWithEmailAndPassword(auth, inputEmail, inputPassword)
+            .then(() => {
+                toast.success('Cadastrado com sucesso!')
+                navigate("/admin", { replace: true })
+            }).catch(() => {
+                toast.error('Erro ao tentar fazer o login')
+            })
+        } else {
+            alert('Preencha todos os campos')
+            return;
+        }
+    }
+
     return (
         <div className='login-container'>
             <Logo />
 
-            <form className="form" onSubmit={handleLogin}>
+            <div className="form">
                 <Input 
                     type='email' 
                     placeholder='Digite seu e-mail...' 
@@ -53,10 +67,10 @@ export default function Login() {
                     value={inputPassword}
                     handleInputChange={(e) => setInputPassword(e.target.value)}
                 />
-
-                <button type="submit">Acessar</button>
-
-            </form>
+                
+                <button className='btn' onClick={handleLogin}>Logar</button>
+                <button className='btn' onClick={handleRegister}>Criar nova conta</button>
+            </div>
         </div>
     )
 }
