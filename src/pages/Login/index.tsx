@@ -12,10 +12,10 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { Input } from '../../components/Input'
 
+
 export default function Login() {
     const [inputEmail, setInputEmail] = useState<string>("")
     const [inputPassword, setInputPassword] = useState<string>("")
-
     const navigate = useNavigate();
 
     function handleLogin() {

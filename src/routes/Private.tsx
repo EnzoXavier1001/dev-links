@@ -6,7 +6,7 @@ import { onAuthStateChanged } from 'firebase/auth'
 import { Navigate } from 'react-router-dom'
 
 type PrivateProps = {
-    children:React.ReactNode;
+    children: JSX.Element;
 }
 
 export default function Private({ children }: PrivateProps) {
@@ -15,7 +15,7 @@ export default function Private({ children }: PrivateProps) {
 
     useEffect(() => {
         async function checkLogin() {
-            const unsub = onAuthStateChanged(auth, (user) => {
+            onAuthStateChanged(auth, (user) => {
                 
                 if(user) {
                     const userData = {
