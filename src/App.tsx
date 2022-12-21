@@ -8,7 +8,6 @@ import Private from './routes/Private'
 
 import Networks from './pages/Networks'
 
-
 const router = createBrowserRouter([
   {
     path: '/',

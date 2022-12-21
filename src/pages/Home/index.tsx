@@ -82,7 +82,7 @@ export default function Home() {
 
     return (
         <div className='home-container'>
-            <h1>Enzo Costa</h1>
+            <h1>DevLinks</h1>
             <span>Veja meus links 👇</span>
 
             <main className='links'>
