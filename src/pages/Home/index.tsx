@@ -14,6 +14,7 @@ import {
 } from 'firebase/firestore'
 
 import { db } from '../../services/firebase'
+import Header from '../../components/Header'
 
 type Links = {
     id: string;
@@ -82,6 +83,7 @@ export default function Home() {
 
     return (
         <div className='home-container'>
+            <Header />
             <h1>DevLinks</h1>
             <span>Veja meus links 👇</span>
 
