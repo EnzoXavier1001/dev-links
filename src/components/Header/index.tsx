@@ -19,6 +19,9 @@ export default function Header() {
                 <button onClick={handleLogout} title="Sair da aplicação">
                     <BiLogOut size={28} color="#DB2629" />
                 </button>
+                <Link to="/">
+                    Home
+                </Link>
                 <Link to="/admin">
                     Links
                 </Link>
